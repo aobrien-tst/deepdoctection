@@ -25,6 +25,9 @@ RUN pip install --user tensorflow==2.5.
 RUN git clone https://github.com/aobrien-tst/deepdoctection.git
 
 RUN make -C deepdoctection clean
+RUN make -C deepdoctection venv
+ENV PATH="/home/appuser/deepdoctection/venv/bin:${PATH}"
+ENV VIRTUAL_ENV="/home/appuser/deepdoctection/venv"
 RUN make -C deepdoctection install-dd-dev-tf
 
 # nodejs is required for installing jupyter lab extensions
